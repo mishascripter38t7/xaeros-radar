@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1220">
+  <title>Xaeros Radar</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">X</span><div><strong>XAEROS RADAR</strong><small>Гражданский мониторинг воздушных тревог</small></div></div>
+    <div class="top-status"><span class="pulse"></span><span id="connection">Инициализация…</span></div>
+  </header>
+  <main class="layout">
+    <section class="map-panel">
+      <div class="map-heading"><div><h1>Карта обстановки</h1><p>Официальные региональные предупреждения · без прогнозирования траекторий</p></div>
+        <button id="locateBtn" class="ghost">Моё местоположение</button>
+      </div>
+      <div id="map" role="application" aria-label="Карта Украины"></div>
+      <div class="map-legend"><span><i class="dot red"></i>Тревога</span><span><i class="dot amber"></i>Данные устарели</span><span><i class="dot green"></i>Нет активной тревоги по источнику</span></div>
+    </section>
+    <aside class="sidebar">
+      <section class="card">
+        <div class="section-title"><h2>Сводка</h2><span id="updatedAt">Нет данных</span></div>
+        <div class="summary"><div class="summary-number" id="activeCount">—</div><div><b>регионов с тревогой</b><small>по подключённому источнику</small></div></div>
+        <div id="sourceMessage" class="notice">Источник данных не настроен. Добавьте адрес совместимого публичного API в <code>config.js</code>.</div>
+      </section>
+      <section class="card">
+        <div class="section-title"><h2>Мои зоны</h2><span class="muted">сохраняются на этом устройстве</span></div>
+        <p class="hint">Нарисуйте круг или многоугольник инструментами на карте. Зоны используются только для сопоставления с официальными региональными предупреждениями, а не для оценки дальности или траектории объектов.</p>
+        <div id="zoneList" class="zone-list"><p class="empty">Пока нет зон. Нарисуйте зону на карте.</p></div>
+      </section>
+      <section class="card">
+        <div class="section-title"><h2>Последние события</h2><button id="refreshBtn" class="text-button">Обновить</button></div>
+        <div id="eventList" class="event-list"><p class="empty">Ожидание данных источника.</p></div>
+      </section>
+      <section class="card settings">
+        <h2>Уведомления</h2>
+        <p class="hint">Браузерные уведомления работают, пока сайт открыт и браузер разрешает их показ.</p>
+        <button id="notifyBtn" class="primary">Разрешить уведомления</button>
+      </section>
+      <footer>Xaeros Radar · Не является системой оповещения. При угрозе следуйте указаниям официальных служб и переходите в укрытие.</footer>
+    </aside>
+  </main>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+  <script src="config.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
